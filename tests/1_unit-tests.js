@@ -11,10 +11,6 @@ suite('Unit Tests', function(){
     });
 
     test('convertHandler should correctly read a decimal number input', () => {
-        assert.strictEqual(convertHandler.getNum('1/2L'), 0.5);
-    });
-
-    test('convertHandler should correctly read a decimal number input', () => {
         assert.strictEqual(convertHandler.getNum('5.4lbs'), 5.4);
     });
     
@@ -68,7 +64,7 @@ suite('Unit Tests', function(){
     test('convertHandler should correctly convert gal to L', () => {
         assert.strictEqual(convertHandler.getReturnUnit('gal'), 'L');
     });
-    
+
     test('convertHandler should correctly convert L to gal', () => {
         assert.strictEqual(convertHandler.getReturnUnit('L'), 'gal');
     });
