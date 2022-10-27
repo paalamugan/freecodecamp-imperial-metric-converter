@@ -18,7 +18,7 @@ const imperialMetric = {
   },
   'lbs' : {
     returnUnit: 'kg',
-    unitString: 'pounds '
+    unitString: 'pounds'
   },
   'kg' : {
     returnUnit: 'lbs',
