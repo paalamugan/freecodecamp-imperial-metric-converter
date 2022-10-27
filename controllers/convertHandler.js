@@ -30,11 +30,12 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     let result = input.replace(/[a-zA-Z]/g, '') || '1';
+    let arr = result.split('/');
     try {
-      if (!(/^((\d+)(.\d+)?\/)?(\d+)(.\d+)?$/.test(result))) {
+      if (arr.length > 2) {
         throw null;
       }
-      result = eval(result);
+      result = arr[0] && arr[1] ? arr[0] / arr[1] : +arr[0];
       return result;
     } catch (err) {
       throw new Error("invalid number");
