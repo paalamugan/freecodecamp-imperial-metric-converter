@@ -3,13 +3,30 @@
 const expect = require('chai').expect;
 const ConvertHandler = require('../controllers/convertHandler.js');
 
+const isInvalidNumberAndUnit = (input) => {
+  let isInvalidNum = false;
+  let isInvalidUnit = false;
+  let convertHandler = new ConvertHandler();
+  try {
+    convertHandler.getNum(input);
+  } catch (err) {
+    isInvalidNum = true;
+  }
+  try {
+    convertHandler.getUnit(input);
+  } catch (err) {
+    isInvalidUnit = true;
+  }
+  return isInvalidNum && isInvalidUnit;
+}
+
 module.exports = function (app) {
   
   let convertHandler = new ConvertHandler();
   app.get('/api/convert', (req, res) => {
     const input = req.query.input;
 
-    if (/^[a-z]+[0-9]+/g.test(input)) {
+    if (isInvalidNumberAndUnit(input)) {
       return res.send("invalid number and unit");
     }
 
